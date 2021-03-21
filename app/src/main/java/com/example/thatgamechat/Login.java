@@ -34,7 +34,6 @@ public class Login extends AppCompatActivity {
     TextView mRegisterBtn;
     Button mLoginBtn;
     FirebaseAuth fAuth;
-    String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,19 +42,20 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //link class variables with layout display variables in xml
-        mEmail      = findViewById(R.id.login_email);
-        mPassword   = findViewById(R.id.login_password);
-        mRegisterBtn= findViewById(R.id.login_text2);
-        mLoginBtn   = findViewById(R.id.login_button);
+        mEmail = findViewById(R.id.login_email);
+        mPassword = findViewById(R.id.login_password);
+        mRegisterBtn = findViewById(R.id.login_text2);
+        mLoginBtn = findViewById(R.id.login_button);
 
         fAuth = FirebaseAuth.getInstance();
 
         //checks if user is already signed in
         //if so, goes directly to home page & ends this activity
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Home.class));
-            finish();
-        }
+        //don't need this at the moment for testing purposes
+//        if (fAuth.getCurrentUser() != null) {
+//            startActivity(new Intent(getApplicationContext(), Home.class));
+//            finish();
+//        }
 
         //routes to register page & ends this activity
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,6 @@ public class Login extends AppCompatActivity {
                 finish();
             }
         });
-
 
 
         //login authentication through firebase
@@ -78,29 +77,31 @@ public class Login extends AppCompatActivity {
 
                 //checks if inputs are empty
                 //can implement more errors to display to user for invalid logins
-                if(TextUtils.isEmpty(email)){
+                if (TextUtils.isEmpty(email)) {
                     mEmail.setError("Email input is required.");
                     return;
                 }
 
-                if(TextUtils.isEmpty(password)){
+                if (TextUtils.isEmpty(password)) {
                     mPassword.setError("Password input is required.");
                     return;
                 }
 
-
-                //** not implemented yet**
-                //authenticate through firebase if email/password is registered in system
-                //then open home page and load user account
-                //** not implemented yet**
-
-
-
-                //after authentication is complete - route to homepage
-                startActivity(new Intent(getApplicationContext(), Home.class));
+                fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
+                            //after authentication is complete - route to homepage
+                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            finish();
+                        } else {
+                            Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
             }
         });
-
     }
 }

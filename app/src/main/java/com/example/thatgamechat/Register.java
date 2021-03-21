@@ -56,10 +56,11 @@ public class Register extends AppCompatActivity {
 
         //checks if user is already signed in
         //if so, goes directly to home page & ends this activity
-        if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Home.class));
-            finish();
-        }
+        //don't need this at the moment for testing purposes
+//        if(fAuth.getCurrentUser() != null){
+//            startActivity(new Intent(getApplicationContext(), Home.class));
+//            finish();
+//        }
 
 
         //when create account button is clicked
