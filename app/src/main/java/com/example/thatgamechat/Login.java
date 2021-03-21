@@ -38,6 +38,7 @@ public class Login extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -87,10 +88,12 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
+
                 //** not implemented yet**
                 //authenticate through firebase if email/password is registered in system
                 //then open home page and load user account
                 //** not implemented yet**
+
 
 
                 //after authentication is complete - route to homepage
