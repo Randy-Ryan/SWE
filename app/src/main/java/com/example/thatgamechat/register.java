@@ -27,6 +27,8 @@ import java.util.Map;
 
 class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
+
+    //randy test
     EditText mFullName,mEmail,mPassword;
     Button mRegisterBtn;
     TextView mLoginBtn;
