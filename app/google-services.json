@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "225685842209",
+    "project_id": "thatgamechat",
+    "storage_bucket": "thatgamechat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225685842209:android:84c0ce9031f5e07849b660",
+        "android_client_info": {
+          "package_name": "com.example.thatgamechat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225685842209-rdorlrs27ggoqvabje8ta1hga8ssdarv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.thatgamechat",
+            "certificate_hash": "3f0e979c0a6f62f926fe836b42fcfa303ffb84fc"
+          }
+        },
+        {
+          "client_id": "225685842209-8ke9bgq31dradevlf58mgqhr50pd53u2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBoDNhG8H9o_C74nBrTf1gBZ4YAfdTbK9g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225685842209-8ke9bgq31dradevlf58mgqhr50pd53u2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
