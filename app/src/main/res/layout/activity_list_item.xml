@@ -13,7 +13,8 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:gravity="center"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/chaticon"/>
 
     <TextView
         android:id="@+id/title"

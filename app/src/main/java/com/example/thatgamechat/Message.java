@@ -1,6 +1,6 @@
 package com.example.thatgamechat;
 
-// Message.java
+//Message class interface
 public class Message {
     private String text; // message body
     private MemberData memberData; // data of the user that sent this message

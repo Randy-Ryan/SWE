@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Icon;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,24 +17,19 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 
 public class Home<T> extends AppCompatActivity {
-    String refID;
     FirebaseAuth fAuth;
 
     public static class GridItem {
@@ -77,11 +70,10 @@ public class Home<T> extends AppCompatActivity {
             title = view.findViewById(R.id.title);
             title.setText(item.title);
 
-            //setting comment
+            //setting date
             TextView date;
             date = view.findViewById(R.id.date);
             date.setText(item.date);
-
 
             return view;
         }
@@ -91,17 +83,30 @@ public class Home<T> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
-        Intent myIntent = getIntent();
-        refID = myIntent.getStringExtra("refID");
+
+        //set the text variables at the top of home page
+        TextView t1;
+        t1 = findViewById(R.id.home_text1);
+        t1.setText("Welcome to That Game Chat!");
+
+        TextView t2;
+        t2 = findViewById(R.id.home_text2);
+        t2.setText("Play Tic Tac Toe to earn points");
+
+        TextView t3;
+        t3 = findViewById(R.id.home_text3);
+        t3.setText("Or join a chat room below");
 
         //create image & place it at /res/drawable
+        //not working right now for some reason
+        //would be good to get icons in there
         Bitmap defaultImage;
         defaultImage = BitmapFactory.decodeResource(getResources(), R.drawable.image_profile);
 
         //get today's date and format for string output
         String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
-        //create testing data
+        //create chat rooms and add to list array
         List<T> list = new ArrayList<>();
 
         GridItem item = new GridItem();
@@ -122,19 +127,14 @@ public class Home<T> extends AppCompatActivity {
         item3.date = "Online";
         list.add((T)item3);
 
-
-
-
         //initialize shop button
-        final Button shopButton;
+        Button shopButton;
         shopButton = findViewById(R.id.home_shop_button);
         shopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(shopButton.getContext(), Shop.class);
-                myIntent.putExtra("refID", refID);
-                startActivity(myIntent);
-
+                //route to shop page
+                startActivity(new Intent(getApplicationContext(), Shop.class));
             }
         });
 
@@ -144,93 +144,72 @@ public class Home<T> extends AppCompatActivity {
         tttButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent myIntent = new Intent(shopButton.getContext(), TicTacToe.class);
-                myIntent.putExtra("refID", refID);
-                startActivity(myIntent);
+                //route to ttt page
+                startActivity(new Intent(getApplicationContext(), TicTacToe.class));
             }
         });
 
-
-        //initializing adapter
-        GridItemAdapter adapter;
-        adapter = new GridItemAdapter(this, 0, list);
-
-
-        //initializing gridView & setting adapter
-        final GridView gridView = findViewById(R.id.GridView01);
-        gridView.setAdapter(adapter);
-
+        //initialize account button
+        Button accountButton;
+        accountButton = findViewById(R.id.home_account_button);
+        accountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //route to account page
+                startActivity(new Intent(getApplicationContext(), Account.class));
+            }
+        });
+        //get this firebase instance
         fAuth = FirebaseAuth.getInstance();
-
-        //sign out button
+        //initialize sign out button
         Button signOutButton;
         signOutButton = findViewById(R.id.home_signout_button);
-
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fAuth.signOut();
                 startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
             }
         });
 
-        String username, email, uid;
-        Uri photoUrl;
-        boolean emailVerified;
+        //initializing adapter
+        GridItemAdapter adapter;
+        adapter = new GridItemAdapter(this, 0, list);
 
+        //initializing gridView & setting adapter
+        final GridView gridView = findViewById(R.id.GridView01);
+        gridView.setAdapter(adapter);
 
-        if (fAuth.getCurrentUser() != null) {
-            username = fAuth.getCurrentUser().getDisplayName();
-            email =  fAuth.getCurrentUser().getEmail();
-            photoUrl =  fAuth.getCurrentUser().getPhotoUrl();
-            emailVerified =  fAuth.getCurrentUser().isEmailVerified();
-            uid =  fAuth.getCurrentUser().getUid();  // The user's ID, unique to the Firebase project. Do NOT use
-            // this value to authenticate with your backend server, if
-            // you have one. Use User.getToken() instead.
-            TextView t1;
-            t1 = findViewById(R.id.home_text1);
-            t1.setText("Username: " + username);
-
-            TextView t2;
-            t2 = findViewById(R.id.home_text2);
-            t2.setText("Account email: " + email);
-
-            TextView t3;
-            t3 = findViewById(R.id.home_text3);
-            t3.setText("Email verified? " + emailVerified);
-        }
-
+        //when a chat room is clicked
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
 
                 Intent myIntent = new Intent(gridView.getContext(), Messages.class);
-                String channelId = "";
+
                 //chat room 1
-                //pass channel id
+                //pass respective Scaledrone channel id
                 if (id == 0){
                     myIntent.putExtra("firstKeyName","qAsa1lwae0kcHtyo");
-                    Log.v("testtest", "qAsa1lwae0kcHtyo");
                     startActivity(myIntent);
                 }
+
                 //chat room 2
-                //pass channel id
+                //pass respective Scaledrone channel id
                 if (id == 1){
                     myIntent.putExtra("firstKeyName","uYBPPresEC6GNq2r");
-                    Log.v("testtest", "uYBPPresEC6GNq2r");
                     startActivity(myIntent);
                 }
+
                 //chat room 3
-                //pass channel id
+                //pass respective Scaledrone channel id
                 if (id == 2){
                     myIntent.putExtra("firstKeyName","MiBNOgaJ9bXeMTcD");
-                    Log.v("testtest", "MiBNOgaJ9bXeMTcD");
                     startActivity(myIntent);
-
                 }
-
             }
         });
     }
-    }
+}

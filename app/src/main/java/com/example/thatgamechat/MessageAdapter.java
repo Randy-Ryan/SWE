@@ -13,7 +13,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-// MessageAdapter.java
 public class MessageAdapter extends BaseAdapter {
 
     List<Message> messages = new ArrayList<Message>();
@@ -22,7 +21,6 @@ public class MessageAdapter extends BaseAdapter {
     public MessageAdapter(Context context) {
         this.context = context;
     }
-
 
     public void add(Message message) {
         this.messages.add(message);

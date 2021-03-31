@@ -1,66 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/home_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Test2"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.08" />
 
     <TextView
         android:id="@+id/home_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Test1"
+        android:textAlignment="center"
         android:textSize="16sp"
-        android:gravity="center"
-        android:textAlignment="center" />
-    <TextView
-        android:id="@+id/home_text2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test2"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:textAlignment="center" />
-
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.033" />
 
     <TextView
         android:id="@+id/home_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Test3"
-        android:textSize="16sp"
         android:gravity="center"
-        android:textAlignment="center" />
+        android:text="Test3"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.128" />
 
     <Button
         android:id="@+id/home_shop_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:gravity="center"
-        android:text="Shop" />
+        android:text="Shop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332" />
+
+    <Button
+        android:id="@+id/home_account_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Account"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.522" />
 
     <Button
         android:id="@+id/home_ttt_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="153dp"
+        android:layout_height="139dp"
+        android:gravity="center"
         android:text="Tic Tac Toe"
-        android:gravity="center" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.408" />
 
     <Button
         android:id="@+id/home_signout_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="86dp"
+        android:layout_height="42dp"
+        android:gravity="center"
         android:text="Sign Out"
-        android:gravity="center" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <GridView
         android:id="@+id/GridView01"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:horizontalSpacing="10dp"
         android:numColumns="3"
-        android:verticalSpacing="10dp" />
+        android:verticalSpacing="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.971" />
 
-</GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

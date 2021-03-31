@@ -27,16 +27,12 @@ public class Login extends AppCompatActivity {
     TextView mRegisterBtn;
     Button mLoginBtn;
     FirebaseAuth fAuth;
-    String refID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Intent myIntent = getIntent();
-        refID = myIntent.getStringExtra("refID");
-
 
         //link class variables with layout display variables in xml
         mEmail = findViewById(R.id.login_email);
@@ -46,15 +42,7 @@ public class Login extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
 
-        //checks if user is already signed in
-        //if so, goes directly to home page & ends this activity
-        //don't need this at the moment for testing purposes
-//        if (fAuth.getCurrentUser() != null) {
-//            startActivity(new Intent(getApplicationContext(), Home.class));
-//            finish();
-//        }
-
-        //routes to register page & ends this activity
+        //route to register page
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,11 +50,13 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
-        //login authentication through firebase
+        //when login button is clicked
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //this line is just so we don't have to sign in every time
+                //testing purposes
                 startActivity(new Intent(getApplicationContext(), Home.class));
 
                 final String email = mEmail.getText().toString().trim();
@@ -90,11 +80,11 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(Login.this, "Successfully Logged In", Toast.LENGTH_LONG).show();
                             //after authentication is complete - route to homepage
-                            Intent myIntent = new Intent(mLoginBtn.getContext(), Home.class);
-                            myIntent.putExtra("refID", refID);
                             startActivity(new Intent(getApplicationContext(), Home.class));
                             finish();
                         } else {
+                            //can further implement here
+                            //highlight fields in red
                             Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_LONG).show();
                         }
                     }

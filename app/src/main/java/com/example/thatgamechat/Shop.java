@@ -11,26 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.Source;
-
-import java.util.HashMap;
-import java.util.Map;
-
 
 public class Shop extends AppCompatActivity {
     int balance;
     FirebaseAuth fAuth;
-    String refID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,8 +61,6 @@ public class Shop extends AppCompatActivity {
         //home button
         Button homeButton;
         homeButton = findViewById(R.id.shop_homebutton);
-
-
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,7 +98,7 @@ public class Shop extends AppCompatActivity {
                                         }
                                     }
                                 } else {
-                                    Log.w("randytest", "Error getting documents.", task.getException());
+                                    Log.v("randytest", "Error getting documents.", task.getException());
                                 }
                             }
                         });

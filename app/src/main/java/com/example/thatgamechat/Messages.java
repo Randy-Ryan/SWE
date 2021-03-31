@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import android.view.View;
 
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -38,6 +39,17 @@ public class Messages extends AppCompatActivity implements RoomListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_view);
+
+        //home button
+        Button homeButton;
+        homeButton = findViewById(R.id.message_homebutton);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), Home.class));
+            }
+        });
+
         Intent myIntent = getIntent(); // gets the previously created intent
         channelID = myIntent.getStringExtra("firstKeyName");
 

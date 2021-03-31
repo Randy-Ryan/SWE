@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Home"
-            android:label="@string/register_page">
+            android:label="@string/home_page">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -43,7 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Shop"
-            android:label="@string/messages_page">
+            android:label="@string/shop_page">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -51,7 +51,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".TicTacToe"
-            android:label="@string/messages_page">
+            android:label="@string/ttt_page">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Account"
+            android:label="@string/account_page">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
