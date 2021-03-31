@@ -3,6 +3,11 @@
     <string name="home_page" >That Game Chat</string>
     <string name="login_page" >That Game Chat</string>
     <string name="register_page" >That Game Chat</string>
+    <string name="messages_page" >That Game Chat</string>
+
+
+    <string name="input_placeholder">Write a message</string>
+
 
     <string name="login_title">Welcome to That Game Chat</string>
     <string name="login_text1">Please enter your credentials</string>

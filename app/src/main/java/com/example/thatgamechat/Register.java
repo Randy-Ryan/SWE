@@ -20,6 +20,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +36,7 @@ public class Register extends AppCompatActivity {
     TextView mLoginBtn;
     FirebaseAuth fAuth;
     String userID;
+    String refID;
 
 
 
@@ -104,6 +108,15 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
 
+                            FirebaseUser fireUser = fAuth.getInstance().getCurrentUser();
+                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(fullName).build();
+
+
+
+
+                            fireUser.updateProfile(profileUpdates);
+
                             // send verification link
                             FirebaseUser fuser = fAuth.getCurrentUser();
                             fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -120,16 +133,36 @@ public class Register extends AppCompatActivity {
 
                             Toast.makeText(Register.this, "User Created.", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
-                            //DocumentReference documentReference = fStore.collection("users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
-                            user.put("fName",fullName);
-                            user.put("email",email);
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            Map<String, Object> user = new HashMap<>();
+                             user.put("Username", fullName);
+                             user.put("Balance", 100);
 
+                            // Add a new document with a generated ID
+                            db.collection("users")
+                                    .add(user)
+                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                        @Override
+                                        public void onSuccess(DocumentReference documentReference) {
+                                            Log.d("Randy", "DocumentSnapshot added with ID: " + documentReference.getId());
+                                            refID = documentReference.getId();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.w("Randy", "Error adding document", e);
+                                        }
+                                    });
+
+                            Intent myIntent = new Intent(mRegisterBtn.getContext(), Home.class);
+                            myIntent.putExtra("refID", refID);
 
                             //route to home page after registration is complete
                             //should we add a loading screen to route to in between pages
                             //loading screen could become useful for future implementations
-                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            startActivity(myIntent);
+                            finish();
 
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -138,8 +171,6 @@ public class Register extends AppCompatActivity {
                 });
             }
         });
-
-
 
         //routes to login page
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
