@@ -93,10 +93,10 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_text1"
-        app:layout_constraintVertical_bias="0.525" />
+        app:layout_constraintVertical_bias="0.557" />
 
     <TextView
         android:id="@+id/register_text2"
@@ -108,6 +108,7 @@
         app:layout_constraintHorizontal_bias="0.472"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_text1"
-        app:layout_constraintVertical_bias="0.699" />
+        app:layout_constraintVertical_bias="0.699"
+        android:textColor="@color/blue"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
