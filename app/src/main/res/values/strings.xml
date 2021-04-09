@@ -1,12 +1,12 @@
 <resources>
-    <string name="app_name" >That Game Chat</string>
-    <string name="home_page" >Home screen</string>
-    <string name="login_page" >Login screen</string>
-    <string name="register_page" >Register screen</string>
-    <string name="messages_page" >Messages screen</string>
-    <string name="account_page" >Account screen</string>
-    <string name="shop_page" >Shop screen</string>
-    <string name="ttt_page" >Tic Tac Toe screen</string>
+    <string name="app_name">That Game Chat</string>
+    <string name="home_page">Home screen</string>
+    <string name="login_page">Login screen</string>
+    <string name="register_page">Register screen</string>
+    <string name="messages_page">Messages screen</string>
+    <string name="account_page">Account screen</string>
+    <string name="shop_page">Shop screen</string>
+    <string name="ttt_page">Tic Tac Toe screen</string>
 
     <string name="input_placeholder">Write a message</string>
 

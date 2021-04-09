@@ -145,7 +145,18 @@ public class Home<T> extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //route to ttt page
-                startActivity(new Intent(getApplicationContext(), TicTacToe.class));
+                startActivity(new Intent(getApplicationContext(), TicTacToe.class)); //ttt class
+            }
+        });
+
+        //initialize practice AI tic tac toe button
+        Button tttaiButton;
+        tttaiButton = findViewById(R.id.home_tttai_button);
+        tttaiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //route to ttt page
+                startActivity(new Intent(getApplicationContext(), AITicTacToe.class)); //ttt ai class
             }
         });
 
