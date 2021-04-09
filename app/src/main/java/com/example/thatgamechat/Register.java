@@ -56,7 +56,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String email = mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+                final String password = mPassword.getText().toString().trim();
                 final String fullName = mFullName.getText().toString();
 
                 //check if fields are empty and display the errors
@@ -114,7 +114,13 @@ public class Register extends AppCompatActivity {
                             FirebaseFirestore db = FirebaseFirestore.getInstance();
                             Map<String, Object> user = new HashMap<>();
                              user.put("Username", fullName);
+                             user.put("userID", userID);
+                             user.put("Email", email);
+                             user.put("Password", password);
                              user.put("Balance", 100);
+                             user.put("Online", "true");
+
+
 
                             // Add a new document with a generated ID
                             //creating new data instance in cloud firestore

@@ -29,7 +29,6 @@ public class Shop extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         final String username = fAuth.getCurrentUser().getDisplayName();
 
-
         //loads the current user's balance
         //issue where it takes a few seconds to first load - maybe just pass this variable
         //instead of doing this in the on create

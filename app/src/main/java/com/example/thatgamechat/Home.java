@@ -128,7 +128,7 @@ public class Home<T> extends AppCompatActivity {
         list.add((T)item3);
 
         //initialize shop button
-        Button shopButton;
+        ImageView shopButton;
         shopButton = findViewById(R.id.home_shop_button);
         shopButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +139,7 @@ public class Home<T> extends AppCompatActivity {
         });
 
         //initialize tic tac toe button
-        Button tttButton;
+        ImageView tttButton;
         tttButton = findViewById(R.id.home_ttt_button);
         tttButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +161,7 @@ public class Home<T> extends AppCompatActivity {
         });
 
         //initialize account button
-        Button accountButton;
+        ImageView accountButton;
         accountButton = findViewById(R.id.home_account_button);
         accountButton.setOnClickListener(new View.OnClickListener() {
             @Override

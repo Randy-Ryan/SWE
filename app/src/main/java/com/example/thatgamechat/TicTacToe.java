@@ -143,7 +143,6 @@ public class TicTacToe extends AppCompatActivity {
         Button homeButton;
         homeButton = findViewById(R.id.ttt_homebutton);
 
-
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
