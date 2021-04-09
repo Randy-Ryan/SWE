@@ -9,13 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
-public class Feed extends AppCompatActivity {
-=======
-
-
 public class TicTacToe extends AppCompatActivity {
->>>>>>> e48b9f013ae9ff8557b1454532ce96652e545660
 
     boolean gameActive = true;
 
@@ -143,7 +137,7 @@ public class TicTacToe extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_feed);
+        setContentView(R.layout.activity_tictactoe);
 
         //home button
         Button homeButton;
