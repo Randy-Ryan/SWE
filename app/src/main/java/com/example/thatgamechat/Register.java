@@ -120,25 +120,9 @@ public class Register extends AppCompatActivity {
                              user.put("Balance", 100);
                              user.put("Online", "true");
 
-
-
                             // Add a new document with a generated ID
                             //creating new data instance in cloud firestore
-                            db.collection("users")
-                                    .add(user)
-                                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                        @Override
-                                        public void onSuccess(DocumentReference documentReference) {
-                                            Log.v("randytest", "DocumentSnapshot added with ID: " + documentReference.getId());
-                                        }
-                                    })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Log.v("randytest", "Error adding document", e);
-                                        }
-                                    });
-
+                            db.collection("users").document(userID).set(user);
 
                             //route to home page after registration is complete
                             //should we add a loading screen to route to in between pages?
