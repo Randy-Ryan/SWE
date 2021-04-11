@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -38,6 +39,7 @@ public class Account extends AppCompatActivity {
     EditText friendInputName;
     int balance;
     Switch switch1;
+    ListView feedView;
     List<String> friendList;
     String friendID;
     FirebaseAuth fAuth;
@@ -173,13 +175,30 @@ public class Account extends AppCompatActivity {
 
         arrayList = new ArrayList<String>();
         //view feed
-        ListView feedView = (ListView) findViewById(R.id.feed_view);
+        feedView = (ListView) findViewById(R.id.feed_view);
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
         friendList = new ArrayList<String>();
         feedView.setAdapter(adapter);
 
-        //this code is very messy and the query can probably be written MUCH easier.
+        feedView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object listItem = feedView.getItemAtPosition(position);
+                String s = listItem.toString().replace("Your friend: ","")
+                        .replace(" is Offline","")
+                        .replace(" is Online","");
+                Log.v("randytest", "" + s);
+                //start private messaging here
+
+                //pass private channelID
+                Intent myIntent = new Intent(feedView.getContext(), Messages.class);
+                myIntent.putExtra("firstKeyName","OxexCGkvOVKDcjIv");
+                startActivity(myIntent);
+            }
+        });
+
         //display friends list when opening profile
+        //maybe add a refresh check for every 10 sec ago to update friends online
         db.collection("users").document(fUser.getUid()).collection("friends")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -217,14 +236,8 @@ public class Account extends AppCompatActivity {
                                         }
                                     });
                         }
-//
                     }
                 });
-
-
-
-
-
 
         //add a friend  button
         Button buttonTest = findViewById(R.id.test1);

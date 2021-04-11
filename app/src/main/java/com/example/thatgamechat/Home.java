@@ -1,5 +1,6 @@
 package com.example.thatgamechat;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -8,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +27,12 @@ import java.util.List;
 import java.util.Locale;
 
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 
 public class Home<T> extends AppCompatActivity {
@@ -83,6 +89,8 @@ public class Home<T> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid);
+        fAuth = FirebaseAuth.getInstance();
+        final String username = fAuth.getCurrentUser().getDisplayName();
 
         //set the text variables at the top of home page
         TextView t1;
@@ -149,17 +157,6 @@ public class Home<T> extends AppCompatActivity {
             }
         });
 
-        //initialize practice AI tic tac toe button
-        Button tttaiButton;
-        tttaiButton = findViewById(R.id.home_tttai_button);
-        tttaiButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //route to ttt page
-                startActivity(new Intent(getApplicationContext(), AITicTacToe.class)); //ttt ai class
-            }
-        });
-
         //initialize account button
         ImageView accountButton;
         accountButton = findViewById(R.id.home_account_button);
@@ -179,6 +176,25 @@ public class Home<T> extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fAuth.signOut();
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                db.collection("users")
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+
+                                        if (document.getData().get("Username").toString().equals(username)) {
+                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                            db.collection("users").document(document.getId()).update("Online", "false");
+                                        }
+                                    }
+                                } else {
+                                    Log.v("randytest", "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
                 startActivity(new Intent(getApplicationContext(), Login.class));
                 finish();
             }

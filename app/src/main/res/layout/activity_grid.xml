@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/home_text2"
-        android:layout_width="252dp"
-        android:layout_height="32dp"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
         android:gravity="center"
         android:text="Test2"
         android:textAlignment="center"
@@ -80,29 +80,15 @@
         android:id="@+id/home_ttt_button"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:background="@drawable/gameicon"
         android:gravity="center"
         android:text="Tic Tac Toe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.062"
+        app:layout_constraintHorizontal_bias="0.276"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.337" />
-
-    <Button
-        android:id="@+id/home_tttai_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:gravity="center"
-        android:text="AI Tic Tac Toe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.337"
-        android:background="@drawable/gameicon"/>
-
+        app:layout_constraintVertical_bias="0.443" />
 
     <Button
         android:id="@+id/home_signout_button"
