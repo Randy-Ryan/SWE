@@ -169,36 +169,6 @@ public class Home<T> extends AppCompatActivity {
         });
         //get this firebase instance
         fAuth = FirebaseAuth.getInstance();
-        //initialize sign out button
-        Button signOutButton;
-        signOutButton = findViewById(R.id.home_signout_button);
-        signOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fAuth.signOut();
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                db.collection("users")
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    for (QueryDocumentSnapshot document : task.getResult()) {
-
-                                        if (document.getData().get("Username").toString().equals(username)) {
-                                            FirebaseFirestore db = FirebaseFirestore.getInstance();
-                                            db.collection("users").document(document.getId()).update("Online", "false");
-                                        }
-                                    }
-                                } else {
-                                    Log.v("randytest", "Error getting documents.", task.getException());
-                                }
-                            }
-                        });
-                startActivity(new Intent(getApplicationContext(), Login.class));
-                finish();
-            }
-        });
 
         //initializing adapter
         GridItemAdapter adapter;

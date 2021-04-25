@@ -13,7 +13,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Login"
-            android:label="@string/login_page">
+            android:label="@string/login_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +23,8 @@
         </activity>
         <activity
             android:name=".Register"
-            android:label="@string/register_page">
+            android:label="@string/register_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -31,7 +33,8 @@
         </activity>
         <activity
             android:name=".Home"
-            android:label="@string/home_page">
+            android:label="@string/home_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -40,7 +43,8 @@
         </activity>
         <activity
             android:name=".Messages"
-            android:label="@string/messages_page">
+            android:label="@string/messages_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -49,7 +53,8 @@
         </activity>
         <activity
             android:name=".Shop"
-            android:label="@string/shop_page">
+            android:label="@string/shop_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -58,7 +63,8 @@
         </activity>
         <activity
             android:name=".TicTacToe"
-            android:label="@string/ttt_page">
+            android:label="@string/ttt_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -67,7 +73,8 @@
         </activity>
         <activity
             android:name=".Account"
-            android:label="@string/account_page">
+            android:label="@string/account_page"
+            android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 

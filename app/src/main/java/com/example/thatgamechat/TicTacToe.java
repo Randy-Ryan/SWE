@@ -161,7 +161,7 @@ public class TicTacToe extends AppCompatActivity {
                 String winnerStr;
 
                 // game reset function be called
-                // gameActive = false;
+                 gameActive = false;
                 if (gameState[winPosition[0]] == 0) {
                     winnerStr = "X has won";
                     Log.v("randytest1", "bal: " + balance);
@@ -256,6 +256,7 @@ public class TicTacToe extends AppCompatActivity {
         //home button
         Button homeButton;
 
+        //update the board every 5 seconds
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
@@ -266,7 +267,7 @@ public class TicTacToe extends AppCompatActivity {
                     }
                 });
             }
-        }, 30000, 5000);
+        }, 15000, 5000);
 
         homeButton = findViewById(R.id.ttt_homebutton);
 
@@ -274,6 +275,7 @@ public class TicTacToe extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Home.class));
+                finish();
             }
         });
 

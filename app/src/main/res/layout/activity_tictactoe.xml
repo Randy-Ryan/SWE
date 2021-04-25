@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".TicTacToe">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient2"
+    tools:context=".TicTacToe">
 
     <!--title text-->
 
@@ -17,6 +17,7 @@ tools:context=".TicTacToe">
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/gradient3"
         android:gravity="center"
         android:text="HOME"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,22 +25,22 @@ tools:context=".TicTacToe">
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937" />
+        app:layout_constraintVertical_bias="0.991" />
 
     <TextView
-    android:id="@+id/textView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="23dp"
-    android:text="Tic Tac Toe"
-    android:textSize="45sp"
-    android:textStyle="bold"
-    app:fontFamily="cursive"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="23dp"
+        android:text="Tic Tac Toe"
+        android:textSize="45sp"
+        android:textStyle="bold"
+        app:fontFamily="cursive"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<!--image of the grid-->
+    <!--image of the grid-->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="369dp"
@@ -48,7 +49,7 @@ tools:context=".TicTacToe">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/grid"/>
+        app:srcCompat="@drawable/grid" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -165,7 +166,7 @@ tools:context=".TicTacToe">
 
     </LinearLayout>
 
-<!--game status text display-->
+    <!--game status text display-->
 
     <Button
         android:id="@+id/ttt_startButton"
@@ -175,14 +176,15 @@ tools:context=".TicTacToe">
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/gradient1"
         android:gravity="center"
         android:text="Start Game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="0.77"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+        app:layout_constraintVertical_bias="0.717" />
 
     <Button
         android:id="@+id/ttt_joinButton"
@@ -192,14 +194,15 @@ tools:context=".TicTacToe">
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/gradient1"
         android:gravity="center"
         android:text="Join Game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
+        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.626" />
+        app:layout_constraintVertical_bias="0.717" />
 
     <TextView
         android:id="@+id/status"
@@ -210,10 +213,10 @@ tools:context=".TicTacToe">
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.731" />
+        app:layout_constraintVertical_bias="0.669" />
 
     <Button
         android:id="@+id/ttt_receive_updateButton"
@@ -223,9 +226,9 @@ tools:context=".TicTacToe">
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:enabled="false"
         android:gravity="center"
         android:text="Receive Update"
-        android:enabled="false"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

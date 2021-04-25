@@ -79,7 +79,7 @@ public class Shop extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (balance>25) {
+                if (balance>=25) {
                     balance = balance - 25;
                     TextView balanceText;
                     balanceText = findViewById(R.id.shop_balance);
@@ -120,7 +120,7 @@ public class Shop extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (balance > 50) {
+                if (balance >= 50) {
                     balance = balance - 50;
                     findViewById(R.id.shop).setBackgroundColor(Color.YELLOW);
                     TextView balanceText;
