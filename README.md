@@ -45,8 +45,6 @@ Demo video
 
 Sample: https://www.youtube.com/watch?v=Pr-JMqTkdEM
 
-How to record your screen: https://www.techradar.com/how-to/record-your-screen
-
 Contributors
 
 Randy Ryan (ryanr4@wit.edu), Project manager/creator
