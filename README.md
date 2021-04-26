@@ -2,8 +2,8 @@
 
 ## Introduction
 
-A simple account based mobile application with a shop/user/balance system functionality tied in with a simple tic tac toe
-board. The app also offers a messaging chat room feature.
+A simple account based mobile application with a shop/user/balance system functionality tied in with a simple tic tac toe board. 
+The app also offers a messaging chat room feature. Note : The system database location is located in the Firestore cloud database.
 
 ## Functions
 
@@ -31,8 +31,7 @@ board. The app also offers a messaging chat room feature.
 ### Installation and Setup
 
 Currently, the app is not available on the app store so an android studio environment with an emulator or android device
-is required to run the project. The source code can be cloned from this repository and ran inside of android studio. Note :
-The system database location is Firestore cloud database .
+is required to run the project. The source code can be cloned from this repository and ran inside of android studio. 
 
 ### Run
 
@@ -41,7 +40,7 @@ be all set to run it on an emulator or android device.
 
 ## Demo video
 
-Sample: https://www.youtube.com/watch?v=Pr-JMqTkdEM
+Sample: https://www.youtube.com/watch?v=D-9uJifxCW0
 
 ### Contributors
 

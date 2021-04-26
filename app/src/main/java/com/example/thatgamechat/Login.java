@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
 
                 //this line is just so we don't have to sign in every time
                 //testing purposes
-               startActivity(new Intent(getApplicationContext(), Home.class));
+               //startActivity(new Intent(getApplicationContext(), Home.class));
 
                 final String email = mEmail.getText().toString().trim();
                 String password = mPassword.getText().toString().trim();
